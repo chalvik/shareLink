@@ -13,4 +13,14 @@ class Link extends Model
         'url',
         'hash'
     ];
+
+    /**
+     * @param $hash
+     * @return mixed
+     */
+    public static function findOrFailForHash($hash)
+    {
+        return Link::where(['hash'=>$hash])->firstOrFail();
+    }
+
 }

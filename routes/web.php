@@ -23,5 +23,5 @@ Route::post('/store', [LinkController::class, 'store'])->name('link.store');
 Route::get('/{hash}+', [LinkController::class, 'show'])->name('link.show');
 Route::get('/{hash}', [LinkController::class, 'redirectTo'])->name('link.redirectTo');
 
-Route::get('/statistics/{link_id}', [StatisticController::class, 'index'])->name('statistics.index');
-Route::post('/statistics/view/{id}', [StatisticController::class, 'view'])->name('statistics.view');
+Route::get('/statistics/{hash}', [StatisticController::class, 'index'])->name('statistics.index');
+Route::post('/statistics/view/{id}', [StatisticController::class, 'show'])->name('statistics.show');

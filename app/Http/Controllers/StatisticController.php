@@ -12,9 +12,12 @@ class StatisticController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Link $link)
+    public function index($hash)
     {
-        $models = [];
+        $link = Link::findOrFailForHash($hash);
+        $query = Statistic::where(['link_id'=>$link->id])->with('link');
+        $models = $query->paginate(5);
+
         return view('statistcs.index',['models'=> $models]);
     }
 
@@ -26,7 +29,7 @@ class StatisticController extends Controller
      */
     public function show(statistic $statistic)
     {
-        return view('link.add',['model'=> new Link()]);
+        return view('statistcs.show',['model'=> Statistic::findOrFaul($statistic)]);
     }
 
 }

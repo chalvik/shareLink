@@ -39,7 +39,7 @@ class LinkController extends Controller
      */
     public function show($hash)
     {
-        $model = Link::where(['hash'=>$hash])->firstOrFail();
+        $model = Link::findOrFailForHash($hash);
         return view('link.show',['model'=> $model]);
     }
 
@@ -51,7 +51,7 @@ class LinkController extends Controller
      */
     public function redirectTo($hash)
     {
-        $model = Link::where(['hash'=>$hash])->firstOrFail();
+        $model = Link::findOrFailForHash($hash);
         return redirect()->away($model->url);
     }
 
