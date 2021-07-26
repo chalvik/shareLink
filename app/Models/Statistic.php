@@ -9,6 +9,11 @@ class Statistic extends Model
 {
     use HasFactory;
 
+    public $fillable = [
+        'link_id',
+        'ip',
+        'user_agent'
+    ];
 
     public function link()
     {
